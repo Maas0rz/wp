@@ -44,7 +44,15 @@
 SetHandler application/x-httpd-php
 ```
 
-即让  Apache 把所有文件都当成 php 来解析（更多 .htaccess 内容的写入，用到时再 Google）。
+即让  Apache 把所有文件都当成 php 来解析，如果仅指定特定文件名当作 php 来解析，则写为：
+
+```
+<FilesMatch "文件名">
+  SetHandler application/x-httpd-php
+</FilesMatch>
+```
+
+（更多 .htaccess 内容的写入，用到时再 Google）。
 
 &emsp;&emsp;下一步，先上传 .htaccess 文件，再上传图片马。
 
