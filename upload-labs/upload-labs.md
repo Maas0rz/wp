@@ -58,7 +58,7 @@ SetHandler application/x-httpd-php
 
 ###### Pass-05 .user.ini
 
-&emsp;&emsp;.ini 文件是 Windows 系统的配置文件，.user.ini 将覆盖 php 配置配置文件 php.ini 。除了php.ini 外，PHP 还会从被执行的 php/ 目录开始一直上升到 web 根目录扫描 .ini 文件。如果被执行的 PHP 文件在 web 根目录之外，则只扫描该目录。注意，同 .htaccess，.user.ini 只能用于访问其所在目录及子目录下的文件时进行覆盖。
+&emsp;&emsp;.ini 文件是 Windows 系统的配置文件，.user.ini 将覆盖 php 配置配置文件 php.ini，但 .user.ini 只能被 CGI／FastCGI 处理 。除了php.ini 外，PHP 还会从被执行的 php/ 目录开始一直上升到 web 根目录扫描 .ini 文件。如果被执行的 PHP 文件在 web 根目录之外，则只扫描该目录。注意，同 .htaccess，.user.ini 只能用于访问其所在目录及子目录下的文件时进行覆盖。
 
 &emsp;&emsp;在 php.ini 文件中相关内容如下：
 
@@ -82,6 +82,8 @@ user_ini.filename 设定 PHP 在搜寻时的目标文件名，默认是 .user.in
 
 - 服务器脚本语言为 PHP 。
 
+- 服务器使用 CGI/FastCGI 。
+
 - 所在目录下要有可执行的 php 文件。
 
 &emsp;&emsp;创建一个 .user.ini 文件，写入：
@@ -92,7 +94,7 @@ auto_prepend_file=test.jpg
 
 什么意思，参考[这篇文章](https://blog.csdn.net/fdipzone/article/details/39064001?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522164934542916780271514234%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=164934542916780271514234&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-1-39064001.142%5Ev7%5Econtrol,157%5Ev4%5Econtrol&utm_term=auto_prepend_file&spm=1018.2226.3001.4187)（更多 .user.ini 内容的写入，用到时再 Google）。
 
-&emsp;&emsp;先上传 .user.ini 文件，再上传 test.jpg（图片马或纯 php 语句等都行），然后访问上传目录下的 readme.php 即可（仅会显示 test.jpg 的内容）。注意，需要版本号后加有 -nts 的 php 版本才能成功解析 .user.ini 。
+&emsp;&emsp;先上传 .user.ini 文件，再上传 test.jpg（图片马或纯 php 语句等都行），然后访问上传目录下的 readme.php 即可（仅会显示 test.jpg 的内容）。注意，需要版本号后加有 -nts 的 php 版本才能成功解析 .user.ini ，因为只有加有 -nts 的 php 版本才使用 CGI/FastCGI 。区分二者，可在 phpinfo 里 Ctrl+F 搜索 Zend Extension Build 或 PHP Extension Build ，里面有 TS 的为非 -nts 版本，有 NTS 的为 -nts 版本。
 
 ###### Pass-06 大小写绕过
 
