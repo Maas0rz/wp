@@ -116,7 +116,7 @@ auto_prepend_file=test.jpg
 
 &emsp;&emsp;php 解释器是 C 语言写的，C 语言中字符串结尾以 ASCII 码为 0 的字符 Null 为标志，其url 编码为 %00 。
 
-&emsp;&emsp;php 的 %00 截断是 5.2.x 版本的一个漏洞，且需参数 magic_quotes_gpc 为 off 状态。如果为 on ，该字符会被加上一个反斜杠转义掉。
+&emsp;&emsp;php 的 %00 截断是 <5.3.4 版本的一个漏洞，且需参数 magic_quotes_gpc 为 off 状态。如果为 on ，该字符会被加上一个反斜杠转义掉。
 
 &emsp;&emsp;环境模拟：在 phpStudy2018 操作面板的“其他选项菜单->php扩展及设置->参数开关设置”里找到 magic_quotes_gpc 并将其关闭。
 
